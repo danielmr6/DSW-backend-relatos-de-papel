@@ -1,6 +1,5 @@
 package com.unir.products.data.model;
 
-import com.unir.products.controller.model.ProductDto;
 import com.unir.products.data.utils.Consts;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,37 +18,39 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Entity
-@Table(name = "products")
+@Table(name = "libros")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @ToString
-public class Product {
+public class Libro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = Consts.NAME, unique = true)
-	private String name;
+	@Column(name = Consts.TITULO, unique = true)
+	private String titulo;
 	
-	@Column(name = Consts.COUNTRY)
-	private String country;
+	@Column(name = Consts.ISBN)
+	private String isbn;
 	
-	@Column(name = Consts.DESCRIPTION)
-	private String description;
+	@Column(name = Consts.AUTOR)
+	private String autor;
 	
 	@Column(name = Consts.VISIBLE)
 	private Boolean visible;
 
-	public void update(ProductDto productDto) {
-		this.name = productDto.getName();
-		this.country = productDto.getCountry();
-		this.description = productDto.getDescription();
-		this.visible = productDto.getVisible();
-	}
+	@Column(name = Consts.CATEGORIA)
+	private String categoria;
 
+	// Valoración de 1 a 5
+	@Column(name = "valoracion", nullable = false)
+	@Min(1)  // Validación: mínimo 1
+	@Max(5)  // Validación: máximo 5
+	private Integer valoracion;
 }
