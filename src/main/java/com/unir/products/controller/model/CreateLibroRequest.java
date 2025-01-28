@@ -16,4 +16,5 @@ public class CreateLibroRequest {
 	private String autor;
 	private String categoria;
 	private Boolean visible;
+	private Integer valoracion;
 }

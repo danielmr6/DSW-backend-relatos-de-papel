@@ -63,7 +63,9 @@ public class LibrosServiceImpl implements LibrosService {
 		if (request != null &&
 				StringUtils.hasLength(request.getTitulo().trim()) &&
 				StringUtils.hasLength(request.getIsbn().trim()) &&
-				request.getVisible() != null) {
+				StringUtils.hasLength(request.getCategoria().trim()) &&
+				request.getVisible() != null &&
+				request.getValoracion() != null) {
 
 			// Si la conversión es exitosa, crear el libro
 			Libro libro = Libro.builder()
@@ -72,6 +74,7 @@ public class LibrosServiceImpl implements LibrosService {
 					.autor(request.getAutor())
 					.visible(request.getVisible())
 					.categoria(request.getCategoria())
+					.valoracion(request.getValoracion())
 					.build();
 
 			// Guardar el libro en la base de datos
