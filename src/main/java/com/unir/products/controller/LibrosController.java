@@ -30,7 +30,7 @@ public class LibrosController {
     @Operation(
             operationId = "Obtener libros",
             description = "Operacion de lectura",
-            summary = "Se devuelve una lista de todos los productos almacenados en la base de datos.")
+            summary = "Se devuelve una lista de todos los libros almacenados en la base de datos.")
     @ApiResponse(
             responseCode = "200",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Libro.class)))
@@ -56,9 +56,9 @@ public class LibrosController {
 
     @GetMapping("/libros/{libroId}")
     @Operation(
-            operationId = "Obtener un producto",
+            operationId = "Obtener un libro",
             description = "Operacion de lectura",
-            summary = "Se devuelve un producto a partir de su identificador.")
+            summary = "Se devuelve un libro a partir de su identificador.")
     @ApiResponse(
             responseCode = "200",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Libro.class)))
