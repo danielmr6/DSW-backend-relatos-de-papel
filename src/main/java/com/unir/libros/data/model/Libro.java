@@ -1,6 +1,7 @@
-package com.unir.products.data.model;
+package com.unir.libros.data.model;
 
-import com.unir.products.data.utils.Consts;
+import com.unir.libros.controller.model.LibroDto;
+import com.unir.libros.data.utils.Consts;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,5 +53,14 @@ public class Libro {
 	@Column(name = "valoracion", nullable = false)
 	@Min(1)  // Validación: mínimo 1
 	@Max(5)  // Validación: máximo 5
-	private Integer valoracion;
+	private Double valoracion;
+
+	public void update(LibroDto libroDto) {
+		this.titulo = libroDto.getTitulo();
+		this.isbn = libroDto.getIsbn();
+		this.autor = libroDto.getAutor();
+		this.visible = libroDto.getVisible();		
+		this.categoria = libroDto.getCategoria();
+		this.valoracion = libroDto.getValoracion();
+	}
 }

@@ -1,10 +1,10 @@
-package com.unir.products.data;
+package com.unir.libros.data;
 
-import com.unir.products.data.model.Libro;
-import com.unir.products.data.utils.Consts;
-import com.unir.products.data.utils.SearchCriteria;
-import com.unir.products.data.utils.SearchOperation;
-import com.unir.products.data.utils.SearchStatement;
+import com.unir.libros.data.model.Libro;
+import com.unir.libros.data.utils.Consts;
+import com.unir.libros.data.utils.SearchCriteria;
+import com.unir.libros.data.utils.SearchOperation;
+import com.unir.libros.data.utils.SearchStatement;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
@@ -33,7 +33,7 @@ public class LibroRepository {
         repository.delete(libro);
     }
 
-    public List<Libro> search(String titulo, String isbn, String autor, String categoria, Boolean visible, Integer valoracion) {
+    public List<Libro> search(String titulo, String isbn, String autor, String categoria, Boolean visible, Double valoracion) {
         SearchCriteria<Libro> spec = new SearchCriteria<>();
 
         if (StringUtils.isNotBlank(titulo)) {

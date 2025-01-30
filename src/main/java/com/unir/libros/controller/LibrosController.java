@@ -1,11 +1,12 @@
-package com.unir.products.controller;
+package com.unir.libros.controller;
 
 import java.util.List;
 import java.util.Map;
 
-import com.unir.products.controller.model.CreateLibroRequest;
-import com.unir.products.data.model.Libro;
-import com.unir.products.service.LibrosService;
+import com.unir.libros.controller.model.CreateLibroRequest;
+import com.unir.libros.controller.model.LibroDto;
+import com.unir.libros.data.model.Libro;
+import com.unir.libros.service.LibrosService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -41,7 +42,7 @@ public class LibrosController {
             @RequestParam(required = false) String autor,
             @RequestParam(required = false) String categoria,
             @RequestParam(required = false) Boolean visible,
-            @RequestParam(required = false) Integer valoracion
+            @RequestParam(required = false) Double valoracion
     ) {
         // Lógica para filtrar libros
         List<Libro> libros = service.getLibros(titulo, isbn, autor, categoria, visible, valoracion);
@@ -68,7 +69,7 @@ public class LibrosController {
             description = "No se ha encontrado el libro con el identificador indicado.")
     public ResponseEntity<Libro> getProduct(@PathVariable String libroId) {
 
-        log.info("Request received for product {}", libroId);
+        log.info("Request received for libro {}", libroId);
         Libro libro = service.getLibro(libroId);
 
         if (libro != null) {
@@ -111,14 +112,14 @@ public class LibrosController {
     }
 
 
-    /* TODO: PATCH, PUT AND DELETE
+    
     @PatchMapping("/libros/{libroId}")
     @Operation(
-            operationId = "Modificar parcialmente un producto",
+            operationId = "Modificar parcialmente un libro",
             description = "RFC 7386. Operacion de escritura",
-            summary = "RFC 7386. Se modifica parcialmente un producto.",
+            summary = "RFC 7386. Se modifica parcialmente un libro.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Datos del producto a crear.",
+                    description = "Datos del libro a crear.",
                     required = true,
                     content = @Content(mediaType = "application/merge-patch+json", schema = @Schema(implementation = String.class))))
     @ApiResponse(
@@ -127,8 +128,8 @@ public class LibrosController {
     @ApiResponse(
             responseCode = "400",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
-            description = "Producto inválido o datos incorrectos introducidos.")
-    public ResponseEntity<Libro> patchProduct(@PathVariable String libroId, @RequestBody String patchBody) {
+            description = "Libro inválido o datos incorrectos introducidos.")
+    public ResponseEntity<Libro> patchLibro(@PathVariable String libroId, @RequestBody String patchBody) {
 
         Libro patched = service.updateLibro(libroId, patchBody);
         if (patched != null) {
@@ -141,9 +142,9 @@ public class LibrosController {
 
     @PutMapping("/libros/{libroId}")
     @Operation(
-            operationId = "Modificar totalmente un producto",
+            operationId = "Modificar totalmente un libro",
             description = "Operacion de escritura",
-            summary = "Se modifica totalmente un producto.",
+            summary = "Se modifica totalmente un libro.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Datos del libro a actualizar.",
                     required = true,
@@ -164,7 +165,7 @@ public class LibrosController {
             return ResponseEntity.notFound().build();
         }
     }
-
+/* TODO:   DELETE
     @DeleteMapping("/libros/{libroId}")
     @Operation(
             operationId = "Eliminar un libro",

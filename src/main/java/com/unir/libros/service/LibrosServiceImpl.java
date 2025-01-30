@@ -1,4 +1,4 @@
-package com.unir.products.service;
+package com.unir.libros.service;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.mergepatch.JsonMergePatch;
-import com.unir.products.controller.model.CreateLibroRequest;
-import com.unir.products.controller.model.LibroDto;
-import com.unir.products.data.LibroRepository;
-import com.unir.products.data.model.Libro;
+import com.unir.libros.controller.model.CreateLibroRequest;
+import com.unir.libros.controller.model.LibroDto;
+import com.unir.libros.data.LibroRepository;
+import com.unir.libros.data.model.Libro;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class LibrosServiceImpl implements LibrosService {
 	private ObjectMapper objectMapper;
 
 	@Override
-	public List<Libro> getLibros(String titulo, String isbn, String autor, String categoria, Boolean visible, Integer valoracion) {
+	public List<Libro> getLibros(String titulo, String isbn, String autor, String categoria, Boolean visible, Double valoracion) {
 
 		if (StringUtils.hasLength(titulo) || StringUtils.hasLength(isbn) || StringUtils.hasLength(autor)
 				|| StringUtils.hasLength(categoria) || (visible != null) || (valoracion != null)) {
@@ -111,8 +111,7 @@ public class LibrosServiceImpl implements LibrosService {
 	public Libro updateLibro(String libroId, LibroDto updateRequest) {
 		Libro libro = repository.getById(Long.valueOf(libroId));
 		if (libro != null) {
-			// TODO: crear metodo update en libro
-			// libro.update(updateRequest);
+			libro.update(updateRequest);
 			repository.save(libro);
 			return libro;
 		} else {

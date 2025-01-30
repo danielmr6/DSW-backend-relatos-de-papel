@@ -1,4 +1,4 @@
-package com.unir.products.controller.model;
+package com.unir.libros.controller.model;
 
 import lombok.*;
 

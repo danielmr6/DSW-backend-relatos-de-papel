@@ -1,4 +1,4 @@
-package com.unir.products.controller.model;
+package com.unir.libros.controller.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
@@ -16,5 +16,5 @@ public class CreateLibroRequest {
 	private String autor;
 	private String categoria;
 	private Boolean visible;
-	private Integer valoracion;
+	private Double valoracion;
 }
