@@ -165,7 +165,7 @@ public class LibrosController {
             return ResponseEntity.notFound().build();
         }
     }
-/* TODO:   DELETE
+
     @DeleteMapping("/libros/{libroId}")
     @Operation(
             operationId = "Eliminar un libro",
@@ -189,5 +189,4 @@ public class LibrosController {
         }
 
     }
-     */
 }
