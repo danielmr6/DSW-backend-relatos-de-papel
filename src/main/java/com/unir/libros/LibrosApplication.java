@@ -1,13 +1,13 @@
-package com.unir.products;
+package com.unir.libros;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductsApplication {
+public class LibrosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductsApplication.class, args);
+		SpringApplication.run(LibrosApplication.class, args);
 	}
 
 }
