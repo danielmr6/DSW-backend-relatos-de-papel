@@ -16,8 +16,8 @@ public interface LibrosService {
 
 	Boolean removeLibro(String libroId);
 
-	Libro updateLibro(String productId, String updateRequest);
+	Libro updateLibro(String libroId, String updateRequest);
 
-	Libro updateLibro(String productId, LibroDto updateRequest);
+	Libro updateLibro(String libroId, LibroDto updateRequest);
 
 }

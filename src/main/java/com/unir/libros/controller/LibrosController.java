@@ -86,7 +86,7 @@ public class LibrosController {
             description = "Operacion de escritura",
             summary = "Se crea un libro a partir de sus datos.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Datos del producto a crear.",
+                    description = "Datos del libro a crear.",
                     required = true,
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = CreateLibroRequest.class))))
     @ApiResponse(
@@ -99,7 +99,7 @@ public class LibrosController {
     @ApiResponse(
             responseCode = "404",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
-            description = "No se ha encontrado el producto con el identificador indicado.")
+            description = "No se ha encontrado el libro con el identificador indicado.")
     public ResponseEntity<Libro> addProduct(@RequestBody CreateLibroRequest request) {
 
         Libro createdProduct = service.createLibro(request);
@@ -178,7 +178,7 @@ public class LibrosController {
             responseCode = "404",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
             description = "No se ha encontrado el libro con el identificador indicado.")
-    public ResponseEntity<Void> deleteProduct(@PathVariable String libroId) {
+    public ResponseEntity<Void> deleteLibro(@PathVariable String libroId) {
 
         Boolean removed = service.removeLibro(libroId);
 
